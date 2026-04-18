@@ -47,7 +47,7 @@ const MANUAL = {
   '嘟嘟桌面PRO公签版|车机版': 'https://file-qiniu2.dudu-lucky.com/filemanage/202512021119597def46440dff4cde91a3424dbfe91e1e.apk',
   '氢桌面普通版|车机版': 'https://vv.hyjidi.com/app/122/%E6%99%AE%E9%80%9A%E7%89%881.apk',
   '氢桌面吉利版|车机版': 'https://vv.hyjidi.com/app/122/%E5%90%89%E5%88%A9%E8%BD%A6%E5%9E%8B%E4%B8%93%E7%94%A81.apk',
-  '氢桌面公签版|车机版': 'https://vv.hyjidi.com/app/122/%E5%90%AF%E8%BE%B0%E4%BC%97%E7%AD%BE%E7%89%88.apk',
+  '氢桌面公签版|车机版': 'https://vv.hyjidi.com/app/122/画中画公签版1.apk',
   '乐酷桌面普通版|车机版': 'https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/%E4%B9%90%E9%85%B7%E6%A1%8C%E9%9D%A2_1.8.4.7_%E6%99%AE%E9%80%9A_sign.apk',
   '乐酷桌面公签版|车机版': 'https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/%E4%B9%90%E9%85%B7%E6%A1%8C%E9%9D%A2_1.8.4.7_%E5%85%AC%E7%AD%BE_sign.apk',
   '布丁UI普通版|车机版': 'https://assets.autoshafa.com/apk/buding_bece53692609e838da3cd8e2d5cd9999_1.0.2.v4_V4webwww.apk',
@@ -206,9 +206,10 @@ async function crawlBySoftware(name, type, excelUrl, description) {
   const key = name.replace(/\s+/g, '') + '|' + type;
 
   // ① 直接 HTTP → HTML 解析
-  // 吉利版/公签版与普通版共用页面，跳过；嘟嘟桌面各区块APK不同，跳过；哔哩有专用逻辑
+  // 吉利版/公签版与普通版共用页面，跳过；嘟嘟/乐酷/哔哩/QQ音乐/智车/布丁有专用逻辑，跳过
   const skipHtmlParse = name.includes('氢桌面吉利版') || name.includes('氢桌面公签版')
-    || name.includes('嘟嘟桌面') || name.includes('哔哩');
+    || name.includes('嘟嘟桌面') || name.includes('哔哩') || name.includes('乐酷桌面')
+    || name.includes('QQ ') || name.includes('智车') || name.includes('布丁');
   let preFetchedHtml = null;
   if (!skipHtmlParse) {
     try {
@@ -263,7 +264,7 @@ async function crawlBySoftware(name, type, excelUrl, description) {
         result = { url: null, method: 'none' };
       }
     } else if (name.includes('智车')) {
-      result = await crawlZhiChe(excelUrl);
+      result = await crawlZhiChe(excelUrl, name);
       // 如果专用失败，仍尝试 MANUAL（不提前返回）
     } else if (name.includes('喜马拉雅')) {
       result = await crawlXimalaya(excelUrl);
@@ -274,8 +275,8 @@ async function crawlBySoftware(name, type, excelUrl, description) {
     } else if (name.includes('乐酷')) {
       result = await crawlLecoDesktop(excelUrl, name);
     } else if (name.includes('布丁')) {
-      result = await crawlBudingUI(excelUrl);
-    } else if (name.includes('QQ音乐')) {
+      result = await crawlBudingUI(excelUrl, name);
+    } else if (name.includes('QQ ')) {
       result = await crawlQQMusic(excelUrl);
     } else if (name.includes('哔哩')) {
       result = await crawlBilibili(excelUrl);
@@ -517,13 +518,44 @@ async function crawlLecoDesktop(excelUrl, name = '') {
   return { url: null, method: 'none' };
 }
 
-async function crawlBudingUI(excelUrl) {
-  console.log('    [专用] 布丁UI');
+async function crawlBudingUI(excelUrl, name = '') {
+  console.log('    [专用] 布丁UI →', name);
   try {
     const html = await httpGetHtml(excelUrl);
-    const apkLinks = extractApkLinks(html, excelUrl);
-    if (apkLinks.length > 0) return { url: apkLinks[0], method: 'html-parse', allFound: apkLinks };
-  } catch {}
+    // 提取所有 APK/API 链接
+    const allLinks = [];
+    const apkPat = /href="(https?:\/\/(?:api\.budingui\.com|assets\.autoshafa\.com)[^"]+)"/gi;
+    let m;
+    while ((m = apkPat.exec(html)) !== null) {
+      const url = m[1].replace(/&amp;/g, '&');
+      if (!allLinks.includes(url)) allLinks.push(url);
+    }
+
+    if (name.includes('普通版') || name.includes('AOSP') || name.includes('公版')) {
+      // 优先使用 API 链接（普通版/AOSP）
+      const apiLink = allLinks.find(u => u.includes('api.budingui.com'));
+      if (apiLink) {
+        try {
+          const { status } = await checkUrl(apiLink);
+          if (status >= 200 && status < 400) {
+            return { url: apiLink, method: 'html-parse', allFound: allLinks };
+          }
+        } catch {}
+        return { url: apiLink, method: 'html-parse', allFound: allLinks };
+      }
+    } else if (name.includes('低版本') || name.includes('4.x') || name.includes('x86')) {
+      // 低版本安卓系统：找 x86 版本的直链
+      const x86Link = allLinks.find(u => u.includes('x86') || u.includes('v2.1.7'));
+      if (x86Link) return { url: x86Link, method: 'html-parse', allFound: allLinks };
+      // fallback 第一个 CDN 链接
+      const cdnLink = allLinks.find(u => u.includes('assets.autoshafa.com'));
+      if (cdnLink) return { url: cdnLink, method: 'html-parse', allFound: allLinks };
+    }
+    // 默认返回第一个链接
+    if (allLinks.length > 0) return { url: allLinks[0], method: 'html-parse', allFound: allLinks };
+  } catch (e) {
+    console.log('    布丁UI HTTP 失败:', e.message);
+  }
   const urls = await puppeteerIntercept(excelUrl, {
     waitUntil: 'networkidle2', waitMs: 4000,
     apkFilter: u => /\.apk/i.test(u) && u.includes('buding'),
@@ -532,24 +564,77 @@ async function crawlBudingUI(excelUrl) {
   return { url: null, method: 'none' };
 }
 
-async function crawlZhiChe(excelUrl) {
-  console.log('    [专用] 智车桌面');
-  const urls = await puppeteerIntercept('https://www.yxyyds.cn/download.html', {
-    waitUntil: 'networkidle2', waitMs: 5000,
-    apkFilter: u => /\.apk/i.test(u),
-  });
-  if (urls.length > 0) return { url: urls[0], method: 'puppeteer-intercept', allFound: urls };
-  return { url: null, method: 'none' };
+async function crawlZhiChe(excelUrl, name = '') {
+  console.log('    [专用] 智车桌面 →', name);
+  try {
+    // 先获取所有可用渠道列表
+    const listUrl = 'https://api.yxyyds.cn/system/appVersion/getAvailableChannels?platform=android';
+    const listHtml = await httpGetHtml(listUrl);
+    let listJson;
+    try {
+      listJson = JSON.parse(listHtml);
+    } catch {
+      return { url: null, method: 'none', note: '智车渠道API解析失败' };
+    }
+
+    const channels = (listJson.data || listJson.result || []);
+    if (!Array.isArray(channels) || channels.length === 0) {
+      // fallback：尝试直接抓 getLatestRelease
+      const fallbackHtml = await httpGetHtml('https://api.yxyyds.cn/system/appVersion/getLatestRelease?platform=android&channelType=platform');
+      try {
+        const fallback = JSON.parse(fallbackHtml);
+        if (fallback.data && fallback.data.realDownloadUrl) {
+          return { url: fallback.data.realDownloadUrl, method: 'html-parse', allFound: [fallback.data.realDownloadUrl] };
+        }
+      } catch {}
+      return { url: null, method: 'none', note: '智车渠道列表为空' };
+    }
+
+    // 根据 name 匹配合适的渠道
+    // "公签版" / "AOSP" / "公版" → platform 渠道
+    // "普通版" → normal 渠道
+    let targetChannelType = null;
+    if (name.includes('公签') || name.includes('AOSP') || name.includes('公版')) {
+      targetChannelType = 'platform';
+    } else if (name.includes('普通版')) {
+      targetChannelType = 'normal';
+    }
+
+    let targetChannel = targetChannelType
+      ? channels.find(c => c.channelType === targetChannelType)
+      : channels.find(c => c.channelType === 'platform') || channels[0];
+
+    if (!targetChannel) targetChannel = channels[0];
+
+    // 通过 channelType 获取最新版本下载链接
+    const releaseUrl = `https://api.yxyyds.cn/system/appVersion/getLatestRelease?platform=android&channelType=${targetChannel.channelType}`;
+    const releaseHtml = await httpGetHtml(releaseUrl);
+    let releaseJson;
+    try {
+      releaseJson = JSON.parse(releaseHtml);
+    } catch {
+      return { url: null, method: 'none', note: '智车版本API解析失败' };
+    }
+
+    const downloadUrl = releaseJson.data && releaseJson.data.realDownloadUrl;
+    if (!downloadUrl) return { url: null, method: 'none', note: '智车API无下载链接' };
+
+    return {
+      url: downloadUrl,
+      method: 'html-parse',
+      allFound: channels.map(c => `https://api.yxyyds.cn/system/appVersion/getLatestRelease?platform=android&channelType=${c.channelType}`),
+      note: `${targetChannel.channelType} v${releaseJson.data.version || ''}`,
+    };
+  } catch (e) {
+    console.log('    智车 API 失败:', e.message);
+  }
+  return { url: null, method: 'none', note: '智车下载失败' };
 }
 
 async function crawlQQMusic(excelUrl) {
-  console.log('    [专用] QQ音乐车机版');
-  const urls = await puppeteerIntercept('https://y.qq.com/download/download.html', {
-    waitUntil: 'networkidle2', waitMs: 5000,
-    apkFilter: u => /\.apk/i.test(u) && u.includes('qq.com'),
-  });
-  if (urls.length > 0) return { url: urls[0], method: 'puppeteer-intercept', allFound: urls };
-  return { url: null, method: 'none' };
+  console.log('    [专用] QQ音乐车机版 → 走MANUAL（QQ音乐下载页为JS渲染，无法自动抓取车机版APK）');
+  // QQ音乐车机版需人工确认下载页，专用爬取返回null走MANUAL
+  return { url: null, method: 'none', note: 'QQ音乐下载页JS渲染，用MANUAL' };
 }
 
 async function crawlBilibili(excelUrl) {
@@ -605,7 +690,8 @@ async function main() {
     // ① 先验证 Excel 官方 URL 是否直接可用
     // 吉利/公签版与普通版共用页面，跳过；嘟嘟/乐酷各区块APK不同，跳过
     const skipMainStep1 = name.includes('氢桌面吉利版') || name.includes('氢桌面公签版')
-      || name.includes('嘟嘟桌面') || name.includes('乐酷桌面') || name.includes('哔哩');
+      || name.includes('嘟嘟桌面') || name.includes('乐酷桌面') || name.includes('哔哩')
+      || name.includes('智车') || name.includes('布丁') || name.includes('QQ ');
     if (!skipMainStep1 && excelUrl) {
       try {
         const { status, url: finalRedir } = await checkUrl(excelUrl);

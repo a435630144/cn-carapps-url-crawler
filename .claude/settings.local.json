@@ -41,7 +41,18 @@
       "Bash(awk '/▶ 乐酷桌面公签版/,/▶ 布丁/' debug_final.log)",
       "Bash(awk '/▶ 乐酷桌面公签版/,/▶ 布丁/' debug_all.log)",
       "Bash(node -e \"const o=JSON.parse\\(require\\('fs'\\).readFileSync\\('output.json','utf8'\\)\\);console.log\\('generatedAt:',o.generatedAt\\);\")",
-      "Bash(node -e \"const o=JSON.parse\\(require\\('fs'\\).readFileSync\\('output.json','utf8'\\)\\);console.log\\('generatedAt:',o.generatedAt\\);o.results.filter\\(r=>r.name.includes\\('乐酷'\\)||r.name.includes\\('哔哩'\\)\\).forEach\\(r=>console.log\\(r.name,r.type,r.url.split\\('/'\\).pop\\(\\)\\)\\);\")"
+      "Bash(node -e \"const o=JSON.parse\\(require\\('fs'\\).readFileSync\\('output.json','utf8'\\)\\);console.log\\('generatedAt:',o.generatedAt\\);o.results.filter\\(r=>r.name.includes\\('乐酷'\\)||r.name.includes\\('哔哩'\\)\\).forEach\\(r=>console.log\\(r.name,r.type,r.url.split\\('/'\\).pop\\(\\)\\)\\);\")",
+      "WebFetch(domain:lecoauto.com)",
+      "WebFetch(domain:www.budingui.com)",
+      "WebFetch(domain:www.yxyyds.cn)",
+      "WebFetch(domain:y.qq.com)",
+      "Bash(curl *)",
+      "WebSearch",
+      "Bash(python3 -c \"import sys,html; content=sys.stdin.read\\(\\); import re; urls=re.findall\\(r'href=\\\\\"\\(https?://[^\\\\\"]+\\)\\\\\"', content\\); [print\\(u\\) for u in urls]\")",
+      "Bash(node -e \"let d=''; process.stdin.on\\('data',c=>d+=c\\); process.stdin.on\\('end',\\(\\)=>{ const m=d.match\\(/href=\\\\\"\\(https?:\\\\/\\\\/[^\\\\\"]+\\)\\\\\"/g\\); m && m.forEach\\(h=>console.log\\(h.replace\\('href=\\\\\"',''\\).replace\\('\\\\\"',''\\)\\)\\); }\\);\")",
+      "Bash(xxd)",
+      "Bash(node *)",
+      "Bash(python3 *)"
     ]
   }
 }
