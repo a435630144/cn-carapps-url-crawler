@@ -2,8 +2,8 @@
   "total": 30,
   "success": 30,
   "failed": 0,
-  "generatedAt": "2026-04-18T15:51:00.151Z",
-  "note": "动态爬取生成 - 优先解析官方下载页HTML，失败则Puppeteer拦截APK请求，最终Fallback到MANUAL表",
+  "generatedAt": "2026-04-18T15:29:13.794Z",
+  "note": "描述已根据软件名称硬编码生成",
   "results": [
     {
       "name": "嘟嘟桌面 PRO 公版",
@@ -237,7 +237,7 @@
       "category": "车机桌面",
       "source": "官方",
       "description": "智车桌面公签版采用AOSP公共签名，适配更多品牌车机设备，功能与普通版一致，支持多种车机平台和车型。",
-      "url": "https://m407.lanosso.com:446/04182300280224704bb/2026/03/28/9465345b684c93d7e3330ccc9b0192d5.apk?st=hG6pYVsmDxS2kdSrLiyHVQ&e=1776528874&b=AAEIZQVkAHdXdl5LVmdQJlMrXTJQfwI1CHUBPQAqAmFVaFkqUCACKgAnU2BQbANiUWULJFQwVH9RMlhmVmMAOgBgCDoFKAB2V2teb1ZoUHpTZ11xUDo_c&fi=280224704&pid=124-222-133-91&up=2&mp=0&co=0",
+      "url": "https://m407.lanosso.com:446/04182100280224704bb/2026/03/28/9465345b684c93d7e3330ccc9b0192d5.apk?st=tA2DLzXNe3a7jQ-xSq5VNg&e=1776521702&b=VVQBbAloUSZUdQAVBzYEcgB4WzRTfAQzA34INFd9AGMBPA98UCBVfQUiXm0DPwFgCDwPIARgVn0JagA_bV2JeZFU1ATMJJFEnVGgAMQc5BC4ANFt3Uzk_c&fi=280224704&pid=124-222-133-91&up=2&mp=0&co=0",
       "excelUrl": "https://www.yxyyds.cn/download.html",
       "method": "html-parse",
       "status": "ok",
@@ -257,7 +257,7 @@
       "category": "车机桌面",
       "source": "官方",
       "description": "智车桌面是一款适配多种车型的安卓车机桌面，支持主题切换、快捷方式、应用管理和桌面布局自定义等功能。",
-      "url": "https://m908.lanosso.com:446/04182300280222179bb/2026/03/28/f4383037b964e4279eb144629026b09f.apk?st=JFFKYqjDi14CXuP2gk9wYA&e=1776528876&b=AQBbNgJjUiVRcAUQBzYBd1MrWTZXeFRjUSxdYVZ8UCJRdl48Am5TPwUzUCsBIwJjCTABOARkC35VY1p6BjFebwFhW2MCMFJlUSkFIAc_bAWJTaFkrVzdUIlFp&fi=280222179&pid=124-222-133-91&up=2&mp=0&co=0",
+      "url": "https://m908.lanosso.com:446/04182100280222179bb/2026/03/28/f4383037b964e4279eb144629026b09f.apk?st=c3hn4djxPfJECeCywSOU7g&e=1776521704&b=AgNaNwNiVCMFJF9KBjdUIlQsXTJXeAo9Ui9fYwIoUyEBJgtpBmpYNFFnVC8AIlIzADkON1MzViNUYgAgUmVfbgJiWmIDMVRjBX1fegY_aVDdUb10vVzcKfFJq&fi=280222179&pid=124-222-133-91&up=2&mp=0&co=0",
       "excelUrl": "https://www.yxyyds.cn/download.html",
       "method": "html-parse",
       "status": "ok",
@@ -381,9 +381,9 @@
       "method": "puppeteer-intercept",
       "status": "ok",
       "allFound": [
-        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=5294a340-3b3e-11f1-a248-1d7ad2a1f69c&plat=web_www&from=",
-        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=52956690-3b3e-11f1-a248-1d7ad2a1f69c&plat=web_www&from=",
-        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=529602d0-3b3e-11f1-a248-1d7ad2a1f69c&plat=web_www&from="
+        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=7a8cbe80-3b2c-11f1-bd96-451a365a5410&plat=web_www&from=",
+        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=7a8f7da0-3b2c-11f1-bd96-451a365a5410&plat=web_www&from=",
+        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=7a906800-3b2c-11f1-bd96-451a365a5410&plat=web_www&from="
       ]
     },
     {
@@ -392,7 +392,7 @@
       "category": "影音娱乐",
       "source": "官方",
       "description": "酷狗音乐是国内老牌音乐播放器，拥有海量音乐资源，车载版针对车机屏幕和操控方式优化，提供便捷的车载音乐体验。",
-      "url": "https://applabsbssdlbig.kugou.com/202604182350/6ceb1238046ad8a3e5c0b21d7e3f74f6/KugouAuto_v6.1.0_8069_685153ce.apk",
+      "url": "https://applabsbssdlbig.kugou.com/202604182142/e36ae9c7516a434b63921362da3f754b/KugouAuto_v6.1.0_8069_685153ce.apk",
       "excelUrl": "https://download.kugou.com/",
       "method": "html-parse",
       "status": "ok",

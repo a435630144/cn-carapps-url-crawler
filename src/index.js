@@ -3,8 +3,9 @@
  * 车机软件爬取 → 写入数据库工具
  *
  * 用法:
- *   npm run start        # 读取 output.json，写入 MySQL（默认 online 模式）
- *   npm run start:local  # 仅预览，不写入
+ *   npm run start        # 爬取数据，生成 output.json（本地模式）
+ *   npm run start:online # 仅上传 output.json 到数据库
+ *   npm run crawl        # 爬取 + 上传数据库
  */
 
 'use strict';
@@ -12,8 +13,11 @@
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
+const { spawn } = require('child_process');
+
 // ─── CLI 参数解析 ──────────────────────────────────────────────────────────
-// 支持两种格式: --mode local  或  --mode=local
+// 支持: --mode local, --crawl, --mode=local
+const crawlFlag = process.argv.includes('--crawl');
 const modeArg = process.argv.find(a => a.startsWith('--mode='));
 const modeIdx = process.argv.indexOf('--mode');
 if (modeArg) {
@@ -56,6 +60,26 @@ function normalizeUrl(url) {
 
 function now() {
   return new Date().toISOString().slice(0, 19).replace('T', ' ');
+}
+
+// ─── 爬取 ─────────────────────────────────────────────────────────
+function runCrawler() {
+  return new Promise((resolve, reject) => {
+    console.log('\n🔄 正在爬取数据...');
+    const child = spawn('node', ['./src/crawl-all.js'], {
+      stdio: 'inherit',
+      shell: true,
+      cwd: path.join(__dirname, '..'),
+    });
+    child.on('close', (code) => {
+      if (code === 0) {
+        console.log('✅ 爬取完成\n');
+        resolve();
+      } else {
+        reject(new Error(`爬取失败，退出码: ${code}`));
+      }
+    });
+  });
 }
 
 // ─── 数据库初始化 ─────────────────────────────────────────────────
@@ -124,6 +148,16 @@ async function main() {
   console.log(`数据文件: ${DATA_FILE}`);
   console.log(`运行模式: ${MODE}`);
   console.log('');
+
+  // 0. 爬取（如需）
+  if (crawlFlag) {
+    try {
+      await runCrawler();
+    } catch(e) {
+      console.error('❌', e.message);
+      process.exit(1);
+    }
+  }
 
   // 1. 读取 JSON
   let data;
@@ -207,12 +241,12 @@ async function main() {
           );
           updated++;
         } else {
-          // URL 没变，但检查 category / method 等字段是否需要更新
-          const needsMeta = existingRow.category !== (r.category || null) || existingRow.method !== (r.method || null);
+          // URL 没变，但检查 description / category / method 等字段是否需要更新
+          const needsMeta = existingRow.description !== (r.description || null) || existingRow.category !== (r.category || null) || existingRow.method !== (r.method || null);
           if (needsMeta) {
             await conn.execute(
-              `UPDATE software_craw SET category = ?, method = ?, updated_at = ? WHERE name = ? AND type = ?`,
-              [r.category || null, r.method || null, now(), r.name, r.type],
+              `UPDATE software_craw SET description = ?, category = ?, method = ?, updated_at = ? WHERE name = ? AND type = ?`,
+              [r.description || null, r.category || null, r.method || null, now(), r.name, r.type],
             );
             updated++;
           } else {

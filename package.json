@@ -4,8 +4,9 @@
   "description": "车机软件直链爬虫 + 数据库导入工具",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "start:online": "node src/index.js --mode=online"
+    "start": "node src/crawl-all.js",
+    "start:online": "node src/index.js --mode=online",
+    "crawl": "node src/index.js --crawl --mode=online"
   },
   "keywords": [
     "crawler",

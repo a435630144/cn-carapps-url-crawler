@@ -15,7 +15,7 @@ const XLSX = require('xlsx');
 
 // ── Excel ──────────────────────────────────────────────────────────────────
 const excelPath = process.env.SOFTWARE_DATA_PATH
-  || 'D:/OneDrive/自学编程/claude code/work3/车机软件汇总.xlsx';
+  || path.join(__dirname, '..', '车机软件汇总.xlsx');
 
 const wb = XLSX.readFile(excelPath);
 const ws = wb.Sheets['Sheet1'];
