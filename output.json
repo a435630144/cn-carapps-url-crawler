@@ -1,0 +1,375 @@
+{
+  "total": 25,
+  "success": 25,
+  "failed": 0,
+  "generatedAt": "2026-04-18T10:53:44.836Z",
+  "note": "动态爬取生成 - 优先解析官方下载页HTML，失败则Puppeteer拦截APK请求，最终Fallback到MANUAL表",
+  "results": [
+    {
+      "name": "嘟嘟桌面 PRO 公版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "爬取PRO公版，通过HTML解析，分为4个section，链接位于公版下",
+      "url": "https://file-qiniu2.dudu-lucky.com/filemanage/20251126203719e2c6856da541458f8e1a15a3e63bd1b6.apk",
+      "excelUrl": "https://dudu-lucky.com/guide/download.html",
+      "method": "html-parse-section",
+      "status": "ok",
+      "allFound": [
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202511262036319ca10b6daa6943ab8a27c38eb95cb78e.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/20251201173247faf356d55124481c857ce54384b45e7a.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011731168f006cbd7d1e4ea4bf23ea6af358138c.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011726464c4dcd0e32c84c4da6180118a00882ad.apk",
+        "https://file-n3.dudu-lucky.com:18103/upload/common/202512021444540888f06518d94819b4cbf2168d9ca255.apk",
+        "https://file-n3.dudu-lucky.com:18103/upload/common/20251202210940184dcd6e95564fd2a5c1d6f5cd2ea371.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011516080fc247a9fffa45b4b697f3b6b54af80c.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011515036e4ebb04e30445d3a2c6d8074dba692b.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512021119597def46440dff4cde91a3424dbfe91e1e.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/20251202112110604d329be9bc4c1cb7b14b95644f7016.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/2025120211202718fc797a750c403eade9c91d2825462d.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202212112114553327bed11f5542eea9718e5055f20690.apk"
+      ]
+    },
+    {
+      "name": "嘟嘟桌面 PRO MINI 版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "爬取PRO MINI 版，通过HTML解析，分为4个section，链接位于公版下",
+      "url": "https://file-n3.dudu-lucky.com:18103/upload/common/20251202210940184dcd6e95564fd2a5c1d6f5cd2ea371.apk",
+      "excelUrl": "https://dudu-lucky.com/guide/download.html",
+      "method": "html-parse-section",
+      "status": "ok",
+      "allFound": [
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202511262036319ca10b6daa6943ab8a27c38eb95cb78e.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/20251201173247faf356d55124481c857ce54384b45e7a.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011731168f006cbd7d1e4ea4bf23ea6af358138c.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011726464c4dcd0e32c84c4da6180118a00882ad.apk",
+        "https://file-n3.dudu-lucky.com:18103/upload/common/202512021444540888f06518d94819b4cbf2168d9ca255.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/20251126203719e2c6856da541458f8e1a15a3e63bd1b6.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011516080fc247a9fffa45b4b697f3b6b54af80c.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512011515036e4ebb04e30445d3a2c6d8074dba692b.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202512021119597def46440dff4cde91a3424dbfe91e1e.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/20251202112110604d329be9bc4c1cb7b14b95644f7016.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/2025120211202718fc797a750c403eade9c91d2825462d.apk",
+        "https://file-qiniu2.dudu-lucky.com/filemanage/202212112114553327bed11f5542eea9718e5055f20690.apk"
+      ]
+    },
+    {
+      "name": "嘟嘟桌面 PRO 公签版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "爬取PRO 公签版，通过HTML解析，分为4个section，链接位于PRO公签版下",
+      "url": "https://file-qiniu2.dudu-lucky.com/filemanage/202512021119597def46440dff4cde91a3424dbfe91e1e.apk",
+      "excelUrl": "https://dudu-lucky.com/guide/download.html",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "氢桌面普通版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "点击下载，进行html解析，右上角<a class=\"btn\" onclick=\"showdownload()\">下载</a> 点击之后，出现这个dialog<div class=\"download_dialog_con\" onclick=\"window.event.cancelBubble = true;\" style=\"overflow:auto;padding-left:20px;\">\r\n                <center>\r\n\r\n                    <div style=\"color:#999;font-size:12px;\">\r\n                        如何区分版本:桌面设置-关于我们\r\n                        <div>名称显示【氢桌面】，则下载普通版这一栏</div>名称显示【氢桌面(画中画)】，则下载画中画那一栏\r\n                    </div>\r\n                    <div style=\"margin-top:10px;\">网盘下载：<a id=\"baiduyun\" target=\"_blank\" href=\"https://pan.baidu.com/s/115eoeYk8pehZc8DHevvlcA?pwd=1111\">百度网盘</a></div><a id=\"baiduyun\" target=\"_blank\">\r\n                    <div style=\"margin-bottom:15px;text-align:center;color:#999;margin-top:10px;\">普通版</div>\r\n                    </a><div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\"><a id=\"baiduyun\" target=\"_blank\">\r\n                        </a><a id=\"\" class=\"down_btn down_putong\" target=\"_blank\" style=\"line-height:normal;\" href=\"https://vv.hyjidi.com/app/122/普通版1.apk\">\r\n                            <div style=\"margin-top:3px;\">普通版</div><div style=\"font-size:10px;\">(安装后闪退使用吉利版)</div>\r\n\r\n                        </a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_jili\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/吉利车型专用1.apk\">吉利车型专用</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_wtz\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/比亚迪无特征版.apk\">比亚迪无特征版</a>\r\n\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_qichen\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/启辰众签版.apk\">启辰众签版</a>\r\n                        <br>\r\n\r\n                    </div>\r\n                    <div style=\"margin-bottom:15px;;text-align:center;color:#999;\">画中画版</div>\r\n                    <div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\">\r\n                        <a id=\"\" class=\"down_btn down_gq_hzh\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画公签版1.apk\">公签版</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_feisi\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画飞思卡尔1.apk\">飞思卡尔</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_7870\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画78701.apk\">方易通7870</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_9853\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画x86.apk\">X86版/方易通9853</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_gaotong\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/1202/画中画高通版.apk\">高通版<span class=\"gaotong_versionname\">V1.2.0.2</span></a>\r\n                        <br>\r\n                    </div>\r\n                    <div style=\"margin-bottom:15px;;text-align:center;color:#999;\">其他包名</div>\r\n                    <div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\">\r\n                        <a id=\"\" class=\"down_btn down_htmlview\" target=\"_blank\" style=\"line-height:normal;\" href=\"https://vv.hyjidi.com/app/122/htmlviewer.apk\">\r\n                            <div style=\"margin-top:3px;\">com.android.htmlviewer</div><div style=\"font-size:10px;\">(特殊定制版,不清楚不要随便覆盖安装)</div>\r\n                        </a>\r\n                    </div>\r\n                </center>\r\n            </div>，然后解析dialog内部的结构，每个a标签的href就是下载的链接，然后抓取普通版下载的url",
+      "url": "https://vv.hyjidi.com/app/122/%E6%99%AE%E9%80%9A%E7%89%881.apk",
+      "excelUrl": "https://qing.mvvs.cn/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "氢桌面吉利版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "点击下载，进行html解析，右上角<a class=\"btn\" onclick=\"showdownload()\">下载</a> 点击之后，出现这个dialog<div class=\"download_dialog_con\" onclick=\"window.event.cancelBubble = true;\" style=\"overflow:auto;padding-left:20px;\">\r\n                <center>\r\n\r\n                    <div style=\"color:#999;font-size:12px;\">\r\n                        如何区分版本:桌面设置-关于我们\r\n                        <div>名称显示【氢桌面】，则下载普通版这一栏</div>名称显示【氢桌面(画中画)】，则下载画中画那一栏\r\n                    </div>\r\n                    <div style=\"margin-top:10px;\">网盘下载：<a id=\"baiduyun\" target=\"_blank\" href=\"https://pan.baidu.com/s/115eoeYk8pehZc8DHevvlcA?pwd=1111\">百度网盘</a></div><a id=\"baiduyun\" target=\"_blank\">\r\n                    <div style=\"margin-bottom:15px;text-align:center;color:#999;margin-top:10px;\">普通版</div>\r\n                    </a><div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\"><a id=\"baiduyun\" target=\"_blank\">\r\n                        </a><a id=\"\" class=\"down_btn down_putong\" target=\"_blank\" style=\"line-height:normal;\" href=\"https://vv.hyjidi.com/app/122/普通版1.apk\">\r\n                            <div style=\"margin-top:3px;\">普通版</div><div style=\"font-size:10px;\">(安装后闪退使用吉利版)</div>\r\n\r\n                        </a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_jili\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/吉利车型专用1.apk\">吉利车型专用</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_wtz\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/比亚迪无特征版.apk\">比亚迪无特征版</a>\r\n\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_qichen\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/启辰众签版.apk\">启辰众签版</a>\r\n                        <br>\r\n\r\n                    </div>\r\n                    <div style=\"margin-bottom:15px;;text-align:center;color:#999;\">画中画版</div>\r\n                    <div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\">\r\n                        <a id=\"\" class=\"down_btn down_gq_hzh\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画公签版1.apk\">公签版</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_feisi\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画飞思卡尔1.apk\">飞思卡尔</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_7870\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画78701.apk\">方易通7870</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_9853\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画x86.apk\">X86版/方易通9853</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_gaotong\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/1202/画中画高通版.apk\">高通版<span class=\"gaotong_versionname\">V1.2.0.2</span></a>\r\n                        <br>\r\n                    </div>\r\n                    <div style=\"margin-bottom:15px;;text-align:center;color:#999;\">其他包名</div>\r\n                    <div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\">\r\n                        <a id=\"\" class=\"down_btn down_htmlview\" target=\"_blank\" style=\"line-height:normal;\" href=\"https://vv.hyjidi.com/app/122/htmlviewer.apk\">\r\n                            <div style=\"margin-top:3px;\">com.android.htmlviewer</div><div style=\"font-size:10px;\">(特殊定制版,不清楚不要随便覆盖安装)</div>\r\n                        </a>\r\n                    </div>\r\n                </center>\r\n            </div>，然后解析dialog内部的结构，每个a标签的href就是下载的链接，然后抓取吉利车型专用下载的url",
+      "url": "https://vv.hyjidi.com/app/122/%E5%90%89%E5%88%A9%E8%BD%A6%E5%9E%8B%E4%B8%93%E7%94%A81.apk",
+      "excelUrl": "https://qing.mvvs.cn/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "氢桌面公签版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "点击下载，进行html解析，右上角<a class=\"btn\" onclick=\"showdownload()\">下载</a> 点击之后，出现这个dialog<div class=\"download_dialog_con\" onclick=\"window.event.cancelBubble = true;\" style=\"overflow:auto;padding-left:20px;\">\r\n                <center>\r\n\r\n                    <div style=\"color:#999;font-size:12px;\">\r\n                        如何区分版本:桌面设置-关于我们\r\n                        <div>名称显示【氢桌面】，则下载普通版这一栏</div>名称显示【氢桌面(画中画)】，则下载画中画那一栏\r\n                    </div>\r\n                    <div style=\"margin-top:10px;\">网盘下载：<a id=\"baiduyun\" target=\"_blank\" href=\"https://pan.baidu.com/s/115eoeYk8pehZc8DHevvlcA?pwd=1111\">百度网盘</a></div><a id=\"baiduyun\" target=\"_blank\">\r\n                    <div style=\"margin-bottom:15px;text-align:center;color:#999;margin-top:10px;\">普通版</div>\r\n                    </a><div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\"><a id=\"baiduyun\" target=\"_blank\">\r\n                        </a><a id=\"\" class=\"down_btn down_putong\" target=\"_blank\" style=\"line-height:normal;\" href=\"https://vv.hyjidi.com/app/122/普通版1.apk\">\r\n                            <div style=\"margin-top:3px;\">普通版</div><div style=\"font-size:10px;\">(安装后闪退使用吉利版)</div>\r\n\r\n                        </a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_jili\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/吉利车型专用1.apk\">吉利车型专用</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_wtz\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/比亚迪无特征版.apk\">比亚迪无特征版</a>\r\n\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_qichen\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/启辰众签版.apk\">启辰众签版</a>\r\n                        <br>\r\n\r\n                    </div>\r\n                    <div style=\"margin-bottom:15px;;text-align:center;color:#999;\">画中画版</div>\r\n                    <div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\">\r\n                        <a id=\"\" class=\"down_btn down_gq_hzh\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画公签版1.apk\">公签版</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_feisi\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画飞思卡尔1.apk\">飞思卡尔</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_7870\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画78701.apk\">方易通7870</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_9853\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/122/画中画x86.apk\">X86版/方易通9853</a>\r\n                        <br>\r\n                        <a id=\"\" class=\"down_btn down_gaotong\" target=\"_blank\" href=\"https://vv.hyjidi.com/app/1202/画中画高通版.apk\">高通版<span class=\"gaotong_versionname\">V1.2.0.2</span></a>\r\n                        <br>\r\n                    </div>\r\n                    <div style=\"margin-bottom:15px;;text-align:center;color:#999;\">其他包名</div>\r\n                    <div style=\"display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\">\r\n                        <a id=\"\" class=\"down_btn down_htmlview\" target=\"_blank\" style=\"line-height:normal;\" href=\"https://vv.hyjidi.com/app/122/htmlviewer.apk\">\r\n                            <div style=\"margin-top:3px;\">com.android.htmlviewer</div><div style=\"font-size:10px;\">(特殊定制版,不清楚不要随便覆盖安装)</div>\r\n                        </a>\r\n                    </div>\r\n                </center>\r\n            </div>，然后解析dialog内部的结构，每个a标签的href就是下载的链接，然后画中画版下面抓取公签版下载的url",
+      "url": "https://vv.hyjidi.com/app/122/%E5%90%AF%E8%BE%B0%E4%BC%97%E7%AD%BE%E7%89%88.apk",
+      "excelUrl": "https://qing.mvvs.cn/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "乐酷桌面普通版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "<div class=\"service h-100 rcorners1\">\r\n                        <span class=\"wrap-icon\">\r\n                            <span class=\"icon-leaf\"></span>\r\n                        </span>\r\n                        <h4>普通版本</h4>\r\n                        <h3>V 1.8.4.7 (2026-03-13 17:30:34)</h3>\r\n                        <p>\r\n                            支持车机:适合所有车机 <br> 支持功能: 悬浮地图, 不支持画中画                         </p>\r\n                    </div>，抓取普通版下载url",
+      "url": "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_普通_sign.apk",
+      "excelUrl": "https://lecoauto.com/index/download",
+      "method": "html-parse",
+      "status": "ok",
+      "allFound": [
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_公签_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_飞思_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_高通_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_麒麟_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_诺威达_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_GT6_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_公签兼容_sign.apk"
+      ]
+    },
+    {
+      "name": "乐酷桌面公签版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "<div class=\"service h-100 rcorners1\">\r\n                        <span class=\"wrap-icon\">\r\n                            <span class=\"icon-leaf\"></span>\r\n                        </span>\r\n                        <h4>公签版本</h4>\r\n                        <h3>V 1.8.4.7 (2026-03-13 17:29:56)</h3>\r\n                        <p>\r\n                            支持车机:使用公共签名的车机:方易通车机,梁山车机,车连易盒子,领克E系列,吉利E系列.. <br> 支持功能: 支持画中画                         </p>\r\n                    </div>，抓取公签版下载url",
+      "url": "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_普通_sign.apk",
+      "excelUrl": "https://lecoauto.com/index/download",
+      "method": "html-parse",
+      "status": "ok",
+      "allFound": [
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_公签_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_飞思_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_高通_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_麒麟_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_诺威达_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_GT6_sign.apk",
+        "https://leco-1252637813.cos.ap-nanjing.myqcloud.com/update/乐酷桌面_1.8.4.7_公签兼容_sign.apk"
+      ]
+    },
+    {
+      "name": "布丁 UI 普通版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "<div class=\"flex w-full space-x-[1.67vw]\"><a href=\"https://api.budingui.com/upgrade/download?key=69c659ff923659a5550da6a2&amp;sign=21ef63ee8089b9dbe4c81840ef50e979\" class=\"flex h-[2.8125vw] w-[11.46vw] cursor-pointer items-center justify-center space-x-[0.625vw] rounded-[0.52vw] text-[1.146vw] bg-[#25D9D0] text-black\" aria-describedby=\":Rmimqmqja:\"><span>正式版下载</span><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" version=\"1.1\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" class=\"relative h-[1.25vw] w-[1.25vw]\"><defs><clipPath id=\"master_svg0_166_4000\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"24\" rx=\"0\"></rect></clipPath><clipPath id=\"master_svg1_166_4003\"><rect x=\"19.579833984375\" y=\"4.42095947265625\" width=\"15.1578950881958\" height=\"15.1578950881958\" rx=\"0\"></rect></clipPath></defs><g clip-path=\"url(#master_svg0_166_4000)\"><g><g transform=\"matrix(0,1,-1,0,24.00079345703125,-15.15887451171875)\" clip-path=\"url(#master_svg1_166_4003)\"><g><path d=\"M27.814218,8.24305559765625Q27.674519,8.11518959765625,27.598197,7.94186659765625Q27.521875,7.76854459765625,27.521875,7.57916259765625Q27.521875,7.49052039765625,27.539168,7.40358159765625Q27.556462,7.31664259765625,27.590384,7.23474759765625Q27.624305,7.15285259765625,27.673553,7.07914959765625Q27.722799,7.00544659765625,27.785479,6.9427665976562505Q27.848159,6.88008659765625,27.921862,6.83083959765625Q27.995565,6.78159259765625,28.07746,6.74767159765625Q28.159355,6.71374959765625,28.246294,6.69645559765625Q28.3332328,6.67916259765625,28.421875,6.67916259765625Q28.611257,6.67916259765625,28.784579,6.75548459765625Q28.957902,6.83180659765625,29.085768,6.97150559765625L33.162915,11.04865259765625Q33.225535,11.11127259765625,33.274735,11.18490259765625Q33.323925,11.25853259765625,33.357815,11.34034259765625Q33.391705,11.42216259765625,33.408985,11.50901259765625Q33.426255,11.59587259765625,33.426255,11.684422597656251Q33.426255,11.772982597656249,33.408985,11.85983259765625Q33.391705,11.94669259765625,33.357815,12.02850259765625Q33.323925,12.11032259765625,33.274735,12.183952597656251Q33.225535,12.25758259765625,33.162915,12.32020259765625L29.085765,16.39735259765625Q28.957899,16.53704259765625,28.784578,16.61336259765625Q28.611256,16.68969259765625,28.421875,16.68969259765625Q28.3332328,16.68969259765625,28.246294,16.67239259765625Q28.159355,16.65510259765625,28.07746,16.62118259765625Q27.995565,16.58725259765625,27.921862,16.538012597656248Q27.848159,16.488762597656248,27.785479,16.42608259765625Q27.722799,16.36340259765625,27.673552,16.28970259765625Q27.624305,16.21600259765625,27.590384,16.134102597656252Q27.556462,16.05221259765625,27.539168,15.96527259765625Q27.521875,15.87833259765625,27.521875,15.78969259765625Q27.521875,15.60030259765625,27.598197,15.426982597656249Q27.67452,15.25366259765625,27.814219,15.12579259765625L31.255585,11.684422597656251L27.814218,8.24305559765625Z\" fill-rule=\"evenodd\" fill=\"black\" fill-opacity=\"1\"></path></g><g><path d=\"M20.8829052484375,12.58326406640625Q20.8630321484375,12.58414306640625,20.8431396484375,12.58414306640625Q20.7544974484375,12.58414306640625,20.6675586484375,12.56685006640625Q20.5806196484375,12.54955606640625,20.4987246484375,12.51563406640625Q20.4168296484375,12.48171306640625,20.3431266484375,12.43246506640625Q20.2694236484375,12.38321906640625,20.2067436484375,12.32053906640625Q20.1440636484375,12.25785906640625,20.0948166484375,12.18415606640625Q20.0455696484375,12.11045306640625,20.0116486484375,12.02855806640625Q19.9777266484375,11.94666306640625,19.9604326484375,11.85972406640625Q19.9431396484375,11.77278526640625,19.9431396484375,11.68414306640625Q19.9431396484375,11.59550086640625,19.9604326484375,11.50856206640625Q19.9777266484375,11.42162306640625,20.0116486484375,11.33972806640625Q20.0455696484375,11.25783306640625,20.0948176484375,11.18413006640625Q20.1440636484375,11.11042706640625,20.2067436484375,11.04774706640625Q20.2694236484375,10.98506706640625,20.3431266484375,10.93582006640625Q20.4168296484375,10.88657306640625,20.4987246484375,10.85265206640625Q20.5806196484375,10.81873006640625,20.6675586484375,10.80143606640625Q20.7544974484375,10.78414306640625,20.8431396484375,10.78414306640625Q20.8630321484375,10.78414306640625,20.8829052484375,10.78502206640625L32.4875396484375,10.78502206640625Q32.5074396484375,10.78414306640625,32.527339648437504,10.78414306640625Q32.6160396484375,10.78414306640625,32.7029396484375,10.80143606640625Q32.7898396484375,10.81873006640625,32.8717396484375,10.85265206640625Q32.9536396484375,10.88657306640625,33.027339648437504,10.93582106640625Q33.1010396484375,10.98506706640625,33.1637396484375,11.04774706640625Q33.2264396484375,11.11042706640625,33.2756396484375,11.18413006640625Q33.3249396484375,11.25783306640625,33.3588396484375,11.33972806640625Q33.3927396484375,11.42162306640625,33.410039648437504,11.50856206640625Q33.427339648437496,11.59550086640625,33.427339648437496,11.68414306640625Q33.427339648437496,11.77278526640625,33.410039648437504,11.85972406640625Q33.3927396484375,11.94666306640625,33.3588396484375,12.02855806640625Q33.3249396484375,12.11045306640625,33.2756396484375,12.18415606640625Q33.2264396484375,12.25785906640625,33.1637396484375,12.32053906640625Q33.1010396484375,12.38321906640625,33.027339648437504,12.43246606640625Q32.9536396484375,12.48171306640625,32.8717396484375,12.51563406640625Q32.7898396484375,12.54955606640625,32.7029396484375,12.56685006640625Q32.6160396484375,12.58414306640625,32.527339648437504,12.58414306640625Q32.5074396484375,12.58414306640625,32.4875396484375,12.58326406640625L20.8829052484375,12.58326406640625Z\" fill-rule=\"evenodd\" fill=\"black\" fill-opacity=\"1\"></path></g></g><g><ellipse cx=\"12.00027084350586\" cy=\"11.99996566772461\" rx=\"10.73684310913086\" ry=\"10.73684310913086\" fill-opacity=\"0\" stroke-opacity=\"1\" stroke=\"black\" fill=\"none\" stroke-width=\"1.558476448059082\"></ellipse></g></g></g></svg></a><div class=\"w-[11.46vw]\"></div></div>，抓取正式版下载",
+      "url": "https://assets.autoshafa.com/apk/buding_bece53692609e838da3cd8e2d5cd9999_1.0.2.v4_V4webwww.apk",
+      "excelUrl": "https://www.budingui.com/",
+      "method": "html-parse",
+      "status": "ok",
+      "note": null,
+      "allFound": [
+        "https://assets.autoshafa.com/apk/budingui_v2.1.7_0801-2019x86_release.apk"
+      ]
+    },
+    {
+      "name": "布丁 UI 低版本安卓系统",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "<a href=\"https://assets.autoshafa.com/apk/buding_bece53692609e838da3cd8e2d5cd9999_1.0.2.v4_V4webwww.apk\" class=\"flex w-fit items-center justify-center text-center text-white/80\" aria-describedby=\":Rqimqmqja:\"><span class=\"mr-[0.5vw] border-b border-white/40 text-[0.74vw]\">Android 4.x 系统</span><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" version=\"1.1\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" class=\"relative h-[1.04vw] w-[1.04vw]\"><defs><clipPath id=\"master_svg0_166_4000\"><rect x=\"0\" y=\"0\" width=\"24\" height=\"24\" rx=\"0\"></rect></clipPath><clipPath id=\"master_svg1_166_4003\"><rect x=\"19.579833984375\" y=\"4.42095947265625\" width=\"15.1578950881958\" height=\"15.1578950881958\" rx=\"0\"></rect></clipPath></defs><g clip-path=\"url(#master_svg0_166_4000)\"><g><g transform=\"matrix(0,1,-1,0,24.00079345703125,-15.15887451171875)\" clip-path=\"url(#master_svg1_166_4003)\"><g><path d=\"M27.814218,8.24305559765625Q27.674519,8.11518959765625,27.598197,7.94186659765625Q27.521875,7.76854459765625,27.521875,7.57916259765625Q27.521875,7.49052039765625,27.539168,7.40358159765625Q27.556462,7.31664259765625,27.590384,7.23474759765625Q27.624305,7.15285259765625,27.673553,7.07914959765625Q27.722799,7.00544659765625,27.785479,6.9427665976562505Q27.848159,6.88008659765625,27.921862,6.83083959765625Q27.995565,6.78159259765625,28.07746,6.74767159765625Q28.159355,6.71374959765625,28.246294,6.69645559765625Q28.3332328,6.67916259765625,28.421875,6.67916259765625Q28.611257,6.67916259765625,28.784579,6.75548459765625Q28.957902,6.83180659765625,29.085768,6.97150559765625L33.162915,11.04865259765625Q33.225535,11.11127259765625,33.274735,11.18490259765625Q33.323925,11.25853259765625,33.357815,11.34034259765625Q33.391705,11.42216259765625,33.408985,11.50901259765625Q33.426255,11.59587259765625,33.426255,11.684422597656251Q33.426255,11.772982597656249,33.408985,11.85983259765625Q33.391705,11.94669259765625,33.357815,12.02850259765625Q33.323925,12.11032259765625,33.274735,12.183952597656251Q33.225535,12.25758259765625,33.162915,12.32020259765625L29.085765,16.39735259765625Q28.957899,16.53704259765625,28.784578,16.61336259765625Q28.611256,16.68969259765625,28.421875,16.68969259765625Q28.3332328,16.68969259765625,28.246294,16.67239259765625Q28.159355,16.65510259765625,28.07746,16.62118259765625Q27.995565,16.58725259765625,27.921862,16.538012597656248Q27.848159,16.488762597656248,27.785479,16.42608259765625Q27.722799,16.36340259765625,27.673552,16.28970259765625Q27.624305,16.21600259765625,27.590384,16.134102597656252Q27.556462,16.05221259765625,27.539168,15.96527259765625Q27.521875,15.87833259765625,27.521875,15.78969259765625Q27.521875,15.60030259765625,27.598197,15.426982597656249Q27.67452,15.25366259765625,27.814219,15.12579259765625L31.255585,11.684422597656251L27.814218,8.24305559765625Z\" fill-rule=\"evenodd\" fill=\"rgba(255,255,255,0.8)\" fill-opacity=\"1\"></path></g><g><path d=\"M20.8829052484375,12.58326406640625Q20.8630321484375,12.58414306640625,20.8431396484375,12.58414306640625Q20.7544974484375,12.58414306640625,20.6675586484375,12.56685006640625Q20.5806196484375,12.54955606640625,20.4987246484375,12.51563406640625Q20.4168296484375,12.48171306640625,20.3431266484375,12.43246506640625Q20.2694236484375,12.38321906640625,20.2067436484375,12.32053906640625Q20.1440636484375,12.25785906640625,20.0948166484375,12.18415606640625Q20.0455696484375,12.11045306640625,20.0116486484375,12.02855806640625Q19.9777266484375,11.94666306640625,19.9604326484375,11.85972406640625Q19.9431396484375,11.77278526640625,19.9431396484375,11.68414306640625Q19.9431396484375,11.59550086640625,19.9604326484375,11.50856206640625Q19.9777266484375,11.42162306640625,20.0116486484375,11.33972806640625Q20.0455696484375,11.25783306640625,20.0948176484375,11.18413006640625Q20.1440636484375,11.11042706640625,20.2067436484375,11.04774706640625Q20.2694236484375,10.98506706640625,20.3431266484375,10.93582006640625Q20.4168296484375,10.88657306640625,20.4987246484375,10.85265206640625Q20.5806196484375,10.81873006640625,20.6675586484375,10.80143606640625Q20.7544974484375,10.78414306640625,20.8431396484375,10.78414306640625Q20.8630321484375,10.78414306640625,20.8829052484375,10.78502206640625L32.4875396484375,10.78502206640625Q32.5074396484375,10.78414306640625,32.527339648437504,10.78414306640625Q32.6160396484375,10.78414306640625,32.7029396484375,10.80143606640625Q32.7898396484375,10.81873006640625,32.8717396484375,10.85265206640625Q32.9536396484375,10.88657306640625,33.027339648437504,10.93582106640625Q33.1010396484375,10.98506706640625,33.1637396484375,11.04774706640625Q33.2264396484375,11.11042706640625,33.2756396484375,11.18413006640625Q33.3249396484375,11.25783306640625,33.3588396484375,11.33972806640625Q33.3927396484375,11.42162306640625,33.410039648437504,11.50856206640625Q33.427339648437496,11.59550086640625,33.427339648437496,11.68414306640625Q33.427339648437496,11.77278526640625,33.410039648437504,11.85972406640625Q33.3927396484375,11.94666306640625,33.3588396484375,12.02855806640625Q33.3249396484375,12.11045306640625,33.2756396484375,12.18415606640625Q33.2264396484375,12.25785906640625,33.1637396484375,12.32053906640625Q33.1010396484375,12.38321906640625,33.027339648437504,12.43246606640625Q32.9536396484375,12.48171306640625,32.8717396484375,12.51563406640625Q32.7898396484375,12.54955606640625,32.7029396484375,12.56685006640625Q32.6160396484375,12.58414306640625,32.527339648437504,12.58414306640625Q32.5074396484375,12.58414306640625,32.4875396484375,12.58326406640625L20.8829052484375,12.58326406640625Z\" fill-rule=\"evenodd\" fill=\"rgba(255,255,255,0.8)\" fill-opacity=\"1\"></path></g></g><g><ellipse cx=\"12.00027084350586\" cy=\"11.99996566772461\" rx=\"10.73684310913086\" ry=\"10.73684310913086\" fill-opacity=\"0\" stroke-opacity=\"1\" stroke=\"rgba(255,255,255,0.8)\" fill=\"none\" stroke-width=\"1.558476448059082\"></ellipse></g></g></g></svg></a>，抓取android 4.x 版下载",
+      "url": "https://assets.autoshafa.com/apk/buding_bece53692609e838da3cd8e2d5cd9999_1.0.2.v4_V4webwww.apk",
+      "excelUrl": "https://www.budingui.com/",
+      "method": "html-parse",
+      "status": "ok",
+      "note": null,
+      "allFound": [
+        "https://assets.autoshafa.com/apk/budingui_v2.1.7_0801-2019x86_release.apk"
+      ]
+    },
+    {
+      "name": "智车桌面 公签版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "<button class=\"channel-card active\" data-channel=\"platform\" data-description=\"Android公版签名\">\r\n            <div class=\"card-icon\" style=\"background: linear-gradient(135deg, #3ddc84 0%, #1ea85a 100%); box-shadow: 0 4px 12px rgba(61, 220, 132, 0.4);\">\r\n                <i class=\"fas fa-cogs\"></i>\r\n            </div>\r\n            <div class=\"card-info\">\r\n                <h4>AOSP</h4>\r\n            </div>\r\n            <div class=\"card-check\">\r\n                <i class=\"fas fa-check-circle\"></i>\r\n            </div>\r\n        </button>，抓取aosp的下载url",
+      "url": "https://m407.lanosso.com:446/04171300280224704bb/2026/03/28/9465345b684c93d7e3330ccc9b0192d5.apk",
+      "excelUrl": "https://www.yxyyds.cn/download.html",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "智车桌面 普通版",
+      "type": "车机版",
+      "category": "车机桌面",
+      "source": "官方",
+      "description": "<button class=\"channel-card active\" data-channel=\"normal\" data-description=\"普通签名版本\">\r\n            <div class=\"card-icon\" style=\"background: linear-gradient(135deg, #007aff 0%, #0051d5 100%); box-shadow: 0 4px 12px rgba(0, 122, 255, 0.35);\">\r\n                <i class=\"fas fa-star\"></i>\r\n            </div>\r\n            <div class=\"card-info\">\r\n                <h4>公众版</h4>\r\n            </div>\r\n            <div class=\"card-check\">\r\n                <i class=\"fas fa-check-circle\"></i>\r\n            </div>\r\n        </button>，抓取公众版的下载url",
+      "url": "https://m908.lanosso.com:446/04171300280222179bb/2026/03/28/f4383037b964e4279eb144629026b09f.apk",
+      "excelUrl": "https://www.yxyyds.cn/download.html",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "高德地图",
+      "type": "车机版",
+      "category": "导航地图",
+      "source": "官方",
+      "description": "<a href=\"https://mapdownload.autonavi.com/apps/auto/manual/V910/Auto_9.1.0.600087_release_signed.apk?u=98c348d92dd62ab6caaf7d622c9c35b7&amp;\" target=\"_blank\" class=\"download_btn\" onclick=\"_czc.push(['_trackEvent', '产品下载-APP下载', '点击', '产品下载-APP下载-2.0.0车机版下载']);\">立即下载</a>",
+      "url": "https://mapdownload.autonavi.com/apps/auto/manual/V910/Auto_9.1.0.600087_release_signed.apk",
+      "excelUrl": "https://auto.amap.com/download",
+      "method": "html-parse",
+      "status": "ok",
+      "note": null,
+      "allFound": [
+        "https://mapdownload.autonavi.com/amapauto/apk/guanwangV1.9.0.2080.apk"
+      ]
+    },
+    {
+      "name": "百度地图",
+      "type": "车机版",
+      "category": "导航地图",
+      "source": "官方",
+      "description": "<img data-v-9965eb0e=\"\" src=\"https://map-mobile-resource.cdn.bcebos.com/icon/service/avn-handcart/default/acv21-btn-b.png\" class=\"btn-img\">，点击事件，点击开始下载",
+      "url": "https://downapp.baidu.com/original_new/322/1/1/1775832266877/BaiduMapForAuto.apk",
+      "excelUrl": "https://carmap.baidu.com/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "腾讯地图",
+      "type": "车机版",
+      "category": "导航地图",
+      "source": "官方",
+      "description": "<button data-v-3fbe776b=\"\" class=\"global-button\">立即下载</button>，点击事件，点击开始下载",
+      "url": "https://smart-navi-1258344699.cos.ap-guangzhou.myqcloud.com/ua/apk/TencentMapAuto_default_9.5.0.50_release_20260210161357.apk",
+      "excelUrl": "https://tai.qq.com/navi/pages/index/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "高德地图",
+      "type": "手机版",
+      "category": "导航地图",
+      "source": "官方",
+      "description": "切换到移动端页面再爬取",
+      "url": "https://download.autonavi.com/amap/package/C02110001348/Amap_V16.12.0.2027_android_C02110001348_(Build260323142446iSEB5dJI-64).apk",
+      "excelUrl": "https://wap.amap.com/?from=m&type=m",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "百度地图",
+      "type": "手机版",
+      "category": "导航地图",
+      "source": "官方",
+      "description": "切换到移动端页面再爬取",
+      "url": "https://downpack.baidu.com/baidumap_AndroidPhone_1009176a.apk",
+      "excelUrl": "https://map.baidu.com/zt/client/index/?down=iphone&qd=1012139p&fr=webapp_callna",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "网易云音乐",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "",
+      "url": "https://d3.music.126.net/f4ceaa5f-ca58-4384-be40-9087f2c02c65.apk",
+      "excelUrl": "https://music.163.com/#/download",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "QQ 音乐",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "<li class=\"product_list__item product_list__item--last\">\r\n                        <h3 class=\"product_list__tit\">\r\n                            Android 车载 <span class=\"product_list__version\">最新版:3.10.0.6</span>\r\n                        </h3>\r\n                        <ul class=\"version_list\">\r\n                            \r\n                                \r\n                                    <li class=\"version_list__item\" title=\"该版本为QQ音乐车载版，支持横竖屏切换。\r\n\">- 该版本为QQ音乐车载版，支持横竖屏切换。\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 本次更新包含了以下主要功能：\r\n\">-  本次更新包含了以下主要功能：\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 1、音效、均衡器界面焕新，视觉及操作升级\r\n\">-  1、音效、均衡器界面焕新，视觉及操作升级\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 2、新增沉浸座舱、座舱临境人声音效\r\n\">-  2、新增沉浸座舱、座舱临境人声音效\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 3、新增恢复历史下载功能，多端历史下载列表同步\r\n\">-  3、新增恢复历史下载功能，多端历史下载列表同步\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 4、音质流量消耗显示、有声内容续播能力优化\r\n\">-  4、音质流量消耗显示、有声内容续播能力优化\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 5、问题修复，性能优化\r\n\">-  5、问题修复，性能优化\r\n</li>\r\n                                    \r\n                                    <li class=\"version_list__item\" title=\" 发布时间：2026-04-03\">-  发布时间：2026-04-03</li>\r\n                                    \r\n                        </ul>\r\n                        <a class=\"product__btn js_show_tips\" data-type=\"10\" href=\"javascript:;\">下载</a>\r\n                    </li>，抓取Android 车载的下载url",
+      "url": "https://dldir1.qq.com/music/qqmusictv/10007068_self_32_kg_9.0.0.39_c2a96f72_release_signed.apk",
+      "excelUrl": "https://y.qq.com/download/download.html",
+      "method": "html-parse",
+      "status": "ok",
+      "note": null,
+      "allFound": [
+        "https://c.y.qq.com/cgi-bin/file_redirect.fcg",
+        "https://c.y.qq.com/cgi-bin/file_redirect.fcg",
+        "https://dldir1.qq.com/music/qqmusicpad/10013864-qqmusicpad-6.9.0.7-59b1550dd0_20260206.apk",
+        "https://dldir1.qq.com/music/qqmusiccar/10049404-qqmusiccar-3.10.0.6-80dc5dd2bd_commonMv_full-release-signed.apk"
+      ]
+    },
+    {
+      "name": "酷我音乐",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "<div class=\"item item0\" data-v-3d1eb8a0=\"\"><div class=\"icon\" data-v-3d1eb8a0=\"\"><i class=\"icon_car\" data-v-3d1eb8a0=\"\"></i></div> <div class=\"text\" data-v-3d1eb8a0=\"\"><p class=\"type\" data-v-3d1eb8a0=\"\">车载公版</p> <p data-v-3d1eb8a0=\"\">立即下载</p></div></div>，点击事件，点击后开始下载抓取车载公版",
+      "url": "https://pkgdown.kuwo.cn/mbox/kwplayercar_ar_APK_guanwang.apk",
+      "excelUrl": "https://www.kuwo.cn/down",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "酷我音乐极简版",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "<div class=\"item item4\" data-v-3d1eb8a0=\"\"><div class=\"icon\" data-v-3d1eb8a0=\"\"><i class=\"icon_car\" data-v-3d1eb8a0=\"\"></i></div> <div class=\"text\" data-v-3d1eb8a0=\"\"><p class=\"type\" data-v-3d1eb8a0=\"\">车载极简版</p> <p data-v-3d1eb8a0=\"\">立即下载</p></div></div>，点击事件，点击后开始下载抓取车载极简版",
+      "url": "https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk",
+      "excelUrl": "https://www.kuwo.cn/down",
+      "method": "puppeteer-intercept",
+      "status": "ok",
+      "allFound": [
+        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=d10f46a0-3b14-11f1-8aed-4ba39161c65d&plat=web_www&from=",
+        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=d10f6db0-3b14-11f1-8aed-4ba39161c65d&plat=web_www&from=",
+        "https://mobilebasedata.kuwo.cn/api/sl/web/generate_url?file=https://pkgdown.kuwo.cn/mbox/kwplayerautolite_C_APK_guanwang_lite.apk&httpsStatus=1&reqId=d1103100-3b14-11f1-8aed-4ba39161c65d&plat=web_www&from="
+      ]
+    },
+    {
+      "name": "酷狗音乐",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "<div class=\"tuijian_product_other_item  mr_20 clear_fix fl\">\r\n                        <a style=\"background:url(https://imge.kugou.com/commendpic/20250513/20250513195547550860.png) no-repeat center center\" hidefocus=\"true\" href=\"/dl/kugou_auto\" target=\"_blank\" title=\"酷狗音乐 车载版\" title2=\"kugou_auto\" class=\" fl icon_img\">酷狗音乐 车载版</a>\r\n\r\n            <p class=\"tuijian_product_other_description fl\">\r\n                <a hidefocus=\"true\" href=\"/dl/kugou_auto\" target=\"_blank\" title=\"酷狗音乐 车载版\" class=\"tuijian_product_title\">酷狗音乐 车载版</a>\r\n                    <span class=\"tuijian_product_version\">更新日期：2026-01-26</span>\r\n            </p>\r\n            <div class=\"tuijian_product_other_download\"><a hidefocus=\"true\" target=\"_blank\" onclick=\"phpLogClick(1287);\" title=\"下载酷狗音乐 车载版\" title2=\"kugou_auto\" href=\"/dl/kugou_auto\" class=\"tuijian_product_download\">下载</a>\r\n                   <span class=\"tuijian_product_other_version\">6.1.0</span>\r\n            </div>\r\n                    </div>，抓取车载版",
+      "url": "https://applabsbssdlbig.kugou.com/202604171425/c8ced6803ce0bf2b843e5523448a7fcb/KugouAuto_v6.1.0_8069_685153ce.apk",
+      "excelUrl": "https://download.kugou.com/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "汽水音乐",
+      "type": "手机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "切换到移动端页面再爬取",
+      "url": "https://lf9-apk.ugapk.cn/package/apk/luna/8986_100189030/luna_43074760a_v8986_100189030_46cc_1775590296.apk?v=1775590302",
+      "excelUrl": "https://music.douyin.com/qishui",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "喜马拉雅",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "先点击<a href=\"a\">立即下载</a>，弹出<div class=\"download-confirm download-confirm-click-header\"><div class=\"download-confirm-title\">下载提示</div><div class=\"download-confirm-content\">该应用车机版本为公版，仅限个人用户消费使用，不可用于商业服务用途，对于违规使用产生的后果及风险，喜马拉雅保留追究责任的权利。</div><div class=\"download-confirm-button\"><a href=\"https://apk.pcdn.xmcdn.com/storages/445c-audiofreehighqps/23/BA/GAqhntANMAkfAro9NQRS9RuR.apk\" class=\"download-confirm-agree\" id=\"ximalaya\">确认并下载</a><div class=\"download-confirm-disagree\">取消</div></div></div>，再点击<a href=\"https://apk.pcdn.xmcdn.com/storages/445c-audiofreehighqps/23/BA/GAqhntANMAkfAro9NQRS9RuR.apk\" class=\"download-confirm-agree\" id=\"ximalaya\">确认并下载</a> 开始下载。",
+      "url": "https://apk.pcdn.xmcdn.com/storages/445c-audiofreehighqps/23/BA/GAqhntANMAkfAro9NQRS9RuR.apk",
+      "excelUrl": "https://car.ximalaya.com/#/",
+      "method": "manual",
+      "status": "ok",
+      "allFound": []
+    },
+    {
+      "name": "哔哩哔哩",
+      "type": "车机版",
+      "category": "影音娱乐",
+      "source": "官方",
+      "description": "<a href=\"https://dl.hdslb.com/mobile/latest/android_bilithings_super/bilithings-master.apk?t=20260418\" target=\"_blank\" class=\"dt-btn btn-car bg-car\" data-type=\"car\" title=\"车机版\"></a>，抓取车载版",
+      "url": "https://dl.hdslb.com/mobile/latest/android_bilithings_super/bilithings-master.apk",
+      "excelUrl": "https://app.bilibili.com/?spm_id_from=333.937.0.0",
+      "method": "html-parse",
+      "status": "ok",
+      "allFound": [
+        "https://dl.hdslb.com/mobile/latest/android64/iBiliPlayer-bili.apk",
+        "https://dl.hdslb.com/mobile/latest/iBiliPlayer-bili.apk",
+        "https://dl.hdslb.com/mobile/latest/android_tv_yst/iBiliTV-master.apk",
+        "https://dl.hdslb.com/mobile/latest/android_hd/iBiliPlayer-bili.apk"
+      ]
+    }
+  ]
+}

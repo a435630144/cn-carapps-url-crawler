@@ -1,0 +1,28 @@
+{
+  "name": "work3-crawler",
+  "version": "1.0.0",
+  "description": "车机软件直链爬虫 + 数据库导入工具",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:online": "node src/index.js --mode=online"
+  },
+  "keywords": [
+    "crawler",
+    "car",
+    "software"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "dotenv": "^16.6.1",
+    "jimp": "^1.6.1",
+    "jsqr": "^1.4.0",
+    "mysql2": "^3.22.1",
+    "puppeteer": "^24.41.0",
+    "qrcode-reader": "^1.0.4",
+    "xlsx": "^0.18.5"
+  }
+}
