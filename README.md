@@ -2,6 +2,26 @@
 
 车机软件 APK 下载链接动态爬取工具，从各软件官方下载页抓取 APK 直链。
 
+## 环境配置
+
+项目根目录创建 `.env` 文件：
+
+```env
+# 数据库配置
+DB_TYPE=mysql
+DB_HOST=your_mysql_host
+DB_PORT=3306
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_NAME=your_database
+
+# 数据文件路径（相对路径）
+SOFTWARE_DATA_PATH=./output.json
+
+# 运行模式：local=仅预览，online=写入数据库
+CRAWLER_MODE=local
+```
+
 ## 快速开始
 
 ```bash
