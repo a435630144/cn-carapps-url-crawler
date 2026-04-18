@@ -1,0 +1,5 @@
+debug_temp/
+node_modules/
+.env
+*.log
+~$*.xlsx
