@@ -131,7 +131,6 @@ node src/crawl-all.js
 | 网易云音乐车机版 | music.163.com 为JS渲染，无车载版下载入口 | MANUAL |
 | 汽水音乐手机版 | music.douyin.com/qishui 为JS渲染+二维码 | MANUAL |
 | 喜马拉雅车机版 | car.ximalaya.com 为JS渲染，无APK拦截 | MANUAL |
-| 哔哩哔哩车机版 | 无官方车机版，用 TV 版 android64 替代 | html-parse |
 
 ---
 
