@@ -112,6 +112,20 @@ async function checkUrl(url) {
   });
 }
 
+/** 跟随所有重定向，返回最终 URL */
+async function followRedirects(url, maxRedirects = 10) {
+  let currentUrl = url;
+  for (let i = 0; i < maxRedirects; i++) {
+    const { status, url: nextUrl } = await checkUrl(currentUrl);
+    if (status >= 300 && status < 400 && nextUrl && nextUrl !== currentUrl) {
+      currentUrl = nextUrl.startsWith('http') ? nextUrl : new URL(nextUrl, currentUrl).toString();
+    } else {
+      return status === 200 ? currentUrl : null;
+    }
+  }
+  return null;
+}
+
 /** 从 HTML 中按区块提取 APK（h2 标签分区，按文本内容定位） */
 function extractApkLinksBySection(html, baseUrl) {
   // H2 标签格式: <h2># 公版</h2>，用文本内容而非 id 属性分区
@@ -206,10 +220,10 @@ async function crawlBySoftware(name, type, excelUrl, description) {
   const key = name.replace(/\s+/g, '') + '|' + type;
 
   // ① 直接 HTTP → HTML 解析
-  // 吉利版/公签版与普通版共用页面，跳过；嘟嘟/乐酷/哔哩/QQ音乐/智车/布丁有专用逻辑，跳过
-  const skipHtmlParse = name.includes('氢桌面吉利版') || name.includes('氢桌面公签版')
-    || name.includes('嘟嘟桌面') || name.includes('哔哩') || name.includes('乐酷桌面')
-    || name.includes('QQ ') || name.includes('智车') || name.includes('布丁');
+  // 氢桌面/吉利版/公签版各版本URL不同，跳过通用解析；嘟嘟/乐酷/哔哩/QQ音乐/智车/布丁/酷狗有专用逻辑，跳过
+  const skipHtmlParse = name.includes('嘟嘟桌面') || name.includes('哔哩') || name.includes('乐酷桌面')
+    || name.includes('QQ ') || name.includes('智车') || name.includes('布丁') || name.includes('酷狗')
+    || name.includes('氢桌面');
   let preFetchedHtml = null;
   if (!skipHtmlParse) {
     try {
@@ -256,6 +270,8 @@ async function crawlBySoftware(name, type, excelUrl, description) {
       result = await crawlTencentMap(excelUrl);
     } else if (name.includes('网易') || name.includes('云音乐')) {
       result = await crawlNetEaseMusic(excelUrl);
+    } else if (name.includes('酷狗')) {
+      result = await crawlKuGouMusic(excelUrl);
     } else if (name.includes('酷我')) {
       if (name.includes('极简')) {
         result = await crawlKuwoMusic(excelUrl, 'lite');
@@ -400,13 +416,17 @@ async function crawlKuwoMusic(excelUrl, variant = 'full') {
 }
 
 async function crawlKuGouMusic(excelUrl) {
-  console.log('    [专用] 酷狗音乐车机版');
-  // 先尝试 HTTP 解析
+  console.log('    [专用] 酷狗音乐车机版 → 动态抓取');
+  // download.kugou.com/dl/kugou_auto 固定路径，302重定向到CDN的APK
+  // 每次请求自动跟随重定向，获取最新的CDN地址
   try {
-    const html = await httpGetHtml(excelUrl);
-    const apkLinks = extractApkLinks(html, excelUrl);
-    if (apkLinks.length > 0) return { url: apkLinks[0], method: 'html-parse', allFound: apkLinks };
-  } catch {}
+    const finalUrl = await followRedirects('https://download.kugou.com/dl/kugou_auto');
+    if (finalUrl) {
+      return { url: finalUrl, method: 'html-parse', allFound: [finalUrl] };
+    }
+  } catch (e) {
+    console.log('    酷狗 HTTP 失败:', e.message);
+  }
   const urls = await puppeteerIntercept(excelUrl, {
     waitUntil: 'networkidle2', waitMs: 5000,
     apkFilter: u => /\.apk/i.test(u) && u.includes('kugou'),
@@ -441,13 +461,13 @@ async function crawlDuDu(excelUrl, name = '', preFetchedHtml = null) {
   const html = preFetchedHtml || await httpGetHtml(excelUrl);
   const sections = extractApkLinksBySection(html, excelUrl);
 
-  // 嘟嘟桌面有4个区块：PRO专享版、公版、pro公签版、其他软件
+  // 嘟嘟桌面有4个区块：PRO专享版、公版、PRO公签版、其他软件
   // Excel里3个条目：PRO公版、PRO MINI版、PRO公签版
   // 公版区块里：普通公版 + MINI
   // PRO公签版区块里：PRO公签APK
-  const gbSection = sections.find(s => s.sectionId === '公版');
-  const gqsSection = sections.find(s => s.sectionId === 'pro公签版');
-  const proSection = sections.find(s => s.sectionId === 'pro专享版');
+  const gbSection = sections.find(s => s.sectionId.toLowerCase() === '公版');
+  const gqsSection = sections.find(s => s.sectionId.toLowerCase() === 'pro公签版');
+  const proSection = sections.find(s => s.sectionId.toLowerCase() === 'pro专享版');
 
   // 找对应 APK
   let targetApk = null;
@@ -482,15 +502,44 @@ async function crawlDuDu(excelUrl, name = '', preFetchedHtml = null) {
 
 async function crawlQingDesktop(excelUrl, name = '') {
   console.log(`    [专用] 氢桌面 → ${name}`);
-  // 吉利版、公签版需要点击按钮，无法自动获取，走 MANUAL Fallback
-  if (name.includes('吉利') || name.includes('公签')) {
-    return null;
+  // vv.hyjidi.com/app/122/ 目录有静态索引页，直接解析获取所有 APK 链接
+  try {
+    const indexHtml = await httpGetHtml('https://vv.hyjidi.com/app/122/');
+    const apkPat = /href="([^"]+\.apk)"/gi;
+    const apkFiles = [];
+    let m;
+    while ((m = apkPat.exec(indexHtml)) !== null) {
+      apkFiles.push(decodeURIComponent(m[1]));
+    }
+
+    // 额外获取画中画高通版（在高版本目录）
+    let allApkUrls = apkFiles.map(f => `https://vv.hyjidi.com/app/122/${encodeURIComponent(f)}`);
+    try {
+      const indexHtml2 = await httpGetHtml('https://vv.hyjidi.com/app/1202/');
+      const apkPat2 = /href="([^"]+\.apk)"/gi;
+      let m2;
+      while ((m2 = apkPat2.exec(indexHtml2)) !== null) {
+        allApkUrls.push(`https://vv.hyjidi.com/app/1202/${encodeURIComponent(m2[1])}`);
+      }
+    } catch {}
+
+    if (allApkUrls.length === 0) throw new Error('无APK链接');
+
+    // 根据 name 匹配正确版本
+    let target = allApkUrls[0];
+    if (name.includes('吉利')) {
+      target = allApkUrls.find(u => decodeURIComponent(u).includes('吉利车型专用1')) || target;
+    } else if (name.includes('公签') || name.includes('公签版')) {
+      // 氢桌面公签版 → 画中画公签版（注意不是启辰众签版）
+      target = allApkUrls.find(u => decodeURIComponent(u).includes('画中画公签版1')) || target;
+    } else if (name.includes('普通') || name.includes('普通版')) {
+      target = allApkUrls.find(u => decodeURIComponent(u).includes('普通版1')) || target;
+    }
+
+    return { url: target, method: 'html-parse', allFound: allApkUrls };
+  } catch (e) {
+    console.log('    氢桌面 HTTP 失败:', e.message);
   }
-  const urls = await puppeteerIntercept(excelUrl, {
-    waitUntil: 'networkidle2', waitMs: 5000,
-    apkFilter: u => /\.apk/i.test(u),
-  });
-  if (urls.length > 0) return { url: urls[0], method: 'puppeteer-intercept', allFound: urls };
   return { url: null, method: 'none' };
 }
 
@@ -689,9 +738,9 @@ async function main() {
 
     // ① 先验证 Excel 官方 URL 是否直接可用
     // 吉利/公签版与普通版共用页面，跳过；嘟嘟/乐酷各区块APK不同，跳过
-    const skipMainStep1 = name.includes('氢桌面吉利版') || name.includes('氢桌面公签版')
-      || name.includes('嘟嘟桌面') || name.includes('乐酷桌面') || name.includes('哔哩')
-      || name.includes('智车') || name.includes('布丁') || name.includes('QQ ');
+    const skipMainStep1 = name.includes('嘟嘟桌面') || name.includes('乐酷桌面') || name.includes('哔哩')
+      || name.includes('智车') || name.includes('布丁') || name.includes('QQ ') || name.includes('酷狗')
+      || name.includes('氢桌面');
     if (!skipMainStep1 && excelUrl) {
       try {
         const { status, url: finalRedir } = await checkUrl(excelUrl);
