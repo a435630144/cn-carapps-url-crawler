@@ -54,6 +54,11 @@ const MANUAL = {
   '布丁UI低版本安卓系统|车机版': 'https://assets.autoshafa.com/apk/buding_bece53692609e838da3cd8e2d5cd9999_1.0.2.v4_V4webwww.apk',
   '智车桌面公签版|车机版': 'https://m407.lanosso.com:446/04171300280224704bb/2026/03/28/9465345b684c93d7e3330ccc9b0192d5.apk',
   '智车桌面普通版|车机版': 'https://m908.lanosso.com:446/04171300280222179bb/2026/03/28/f4383037b964e4279eb144629026b09f.apk',
+  '沙发管家|车机版':   'http://yy.sfcdn.org/webwww/pad_webwww_4.9.53.apk',
+  'lanshare|手机版':  'http://fgsqw.com/release/LANShare_1.2.8.apk',
+  'ES文件浏览器|手机版': 'http://s.duapps.com/apks/own/ESFileExplorer-cn.apk',
+  '快马市场|车机版':   'http://res.51czapp.com/xas/upd/kuaima_appstore_1.0.1_beta_8f18fa3.apk',
+  '当贝市场|车机版':   'https://app.qingyingyong.net/down/20250206/dbappstore_car2_1.0.3_dangbei.apk',
 };
 
 // ─── 工具函数 ───────────────────────────────────────────────────
@@ -223,7 +228,7 @@ async function crawlBySoftware(name, type, excelUrl, description) {
   // 氢桌面/吉利版/公签版各版本URL不同，跳过通用解析；嘟嘟/乐酷/哔哩/QQ音乐/智车/布丁/酷狗有专用逻辑，跳过
   const skipHtmlParse = name.includes('嘟嘟桌面') || name.includes('哔哩') || name.includes('乐酷桌面')
     || name.includes('QQ ') || name.includes('智车') || name.includes('布丁') || name.includes('酷狗')
-    || name.includes('氢桌面');
+    || name.includes('氢桌面') || name.includes('当贝') || name.includes('沙发管家');
   let preFetchedHtml = null;
   if (!skipHtmlParse) {
     try {
@@ -296,6 +301,10 @@ async function crawlBySoftware(name, type, excelUrl, description) {
       result = await crawlQQMusic(excelUrl);
     } else if (name.includes('哔哩')) {
       result = await crawlBilibili(excelUrl);
+    } else if (name.includes('当贝')) {
+      result = await crawlDangBei(excelUrl);
+    } else if (name.includes('沙发管家')) {
+      result = await crawlShaFa(excelUrl);
     }
 
     if (result && result.url) return result;
@@ -411,6 +420,38 @@ async function crawlKuwoMusic(excelUrl, variant = 'full') {
       if (fileParam) return { url: fileParam, method: 'puppeteer-intercept', allFound: apkRequests };
     } catch {}
     return { url: apkRequests[0], method: 'puppeteer-intercept', allFound: apkRequests };
+  }
+  return { url: null, method: 'none' };
+}
+
+async function crawlDangBei(excelUrl) {
+  console.log('    [专用] 当贝市场车机版');
+  try {
+    const html = await httpGetHtml(excelUrl);
+    const apkLinks = extractApkLinks(html, excelUrl);
+    if (apkLinks.length > 0) return { url: apkLinks[0], method: 'html-parse', allFound: apkLinks };
+  } catch (e) {
+    console.log('    当贝市场 HTTP 失败:', e.message);
+  }
+  return { url: null, method: 'none' };
+}
+
+async function crawlShaFa(excelUrl) {
+  console.log('    [专用] 沙发管家车机版');
+  // shafa.com/car 是应用市场页面，APK链接直接写在HTML中
+  try {
+    const html = await httpGetHtml(excelUrl);
+    // 沙发管家本体是 shafa market launcher，找 shafa 相关的 APK（非第三方bundle）
+    const apkPat = /href="(https?:\/\/(?:zero|yy|apps3)\.sfcdn\.[^'">]+\.apk[^'">]*)"/gi;
+    const apkLinks = [];
+    let m;
+    while ((m = apkPat.exec(html)) !== null) {
+      const url = m[1].split('?')[0];
+      if (!apkLinks.includes(url)) apkLinks.push(url);
+    }
+    if (apkLinks.length > 0) return { url: apkLinks[0], method: 'html-parse', allFound: apkLinks };
+  } catch (e) {
+    console.log('    沙发管家 HTTP 失败:', e.message);
   }
   return { url: null, method: 'none' };
 }
@@ -740,7 +781,7 @@ async function main() {
     // 吉利/公签版与普通版共用页面，跳过；嘟嘟/乐酷各区块APK不同，跳过
     const skipMainStep1 = name.includes('嘟嘟桌面') || name.includes('乐酷桌面') || name.includes('哔哩')
       || name.includes('智车') || name.includes('布丁') || name.includes('QQ ') || name.includes('酷狗')
-      || name.includes('氢桌面');
+      || name.includes('氢桌面') || name.includes('当贝') || name.includes('沙发管家');
     if (!skipMainStep1 && excelUrl) {
       try {
         const { status, url: finalRedir } = await checkUrl(excelUrl);

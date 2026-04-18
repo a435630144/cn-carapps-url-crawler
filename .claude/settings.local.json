@@ -52,7 +52,10 @@
       "Bash(node -e \"let d=''; process.stdin.on\\('data',c=>d+=c\\); process.stdin.on\\('end',\\(\\)=>{ const m=d.match\\(/href=\\\\\"\\(https?:\\\\/\\\\/[^\\\\\"]+\\)\\\\\"/g\\); m && m.forEach\\(h=>console.log\\(h.replace\\('href=\\\\\"',''\\).replace\\('\\\\\"',''\\)\\)\\); }\\);\")",
       "Bash(xxd)",
       "Bash(node *)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "WebFetch(domain:www.shafa.com)",
+      "WebFetch(domain:www.estrongs.com)",
+      "WebFetch(domain:www.chaui.cn)"
     ]
   }
 }
