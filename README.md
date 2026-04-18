@@ -37,7 +37,7 @@ Excel 列结构：软件名称 | 类型 | 官方下载地址 | 描述 | 来源 |
 | method | 含义 |
 |--------|------|
 | `html-parse` | 官方下载页 HTML 中解析出 APK 直链 |
-| `html-parse-section` | HTML 中分 Section 解析（嘟嘟桌面） |
+| `html-parse-section` | HTML 中分 Section 解析（嘟嘟桌面多版本） |
 | `puppeteer-intercept` | Puppeteer 拦截 JS 发起的 APK 下载请求 |
 | `manual` | MANUAL 备选表中的 URL |
 | `none` | 爬取失败（无有效 URL） |
