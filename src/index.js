@@ -20,6 +20,8 @@ if (modeArg) {
   process.env.CRAWLER_MODE = modeArg.split('=')[1];
 } else if (modeIdx !== -1 && process.argv[modeIdx + 1] && !process.argv[modeIdx + 1].startsWith('--')) {
   process.env.CRAWLER_MODE = process.argv[modeIdx + 1];
+} else {
+  process.env.CRAWLER_MODE = 'local';
 }
 
 const fs   = require('fs');
@@ -199,24 +201,33 @@ async function main() {
         if (existingRow.url !== url) {
           await conn.execute(
             `UPDATE software_craw
-               SET url = ?, source = ?, description = ?, method = ?, updated_at = ?
+               SET url = ?, source = ?, description = ?, method = ?, category = ?, updated_at = ?
              WHERE name = ? AND type = ?`,
-            [url, r.source || null, r.description || null, r.method || null, now(), r.name, r.type],
+            [url, r.source || null, r.description || null, r.method || null, r.category || null, now(), r.name, r.type],
           );
           updated++;
         } else {
-          // URL 没变，只更新时间
-          await conn.execute(
-            `UPDATE software_craw SET updated_at = ? WHERE name = ? AND type = ?`,
-            [now(), r.name, r.type],
-          );
+          // URL 没变，但检查 category / method 等字段是否需要更新
+          const needsMeta = existingRow.category !== (r.category || null) || existingRow.method !== (r.method || null);
+          if (needsMeta) {
+            await conn.execute(
+              `UPDATE software_craw SET category = ?, method = ?, updated_at = ? WHERE name = ? AND type = ?`,
+              [r.category || null, r.method || null, now(), r.name, r.type],
+            );
+            updated++;
+          } else {
+            await conn.execute(
+              `UPDATE software_craw SET updated_at = ? WHERE name = ? AND type = ?`,
+              [now(), r.name, r.type],
+            );
+          }
         }
       } else {
         // INSERT
         await conn.execute(
-          `INSERT INTO software_craw (name, type, url, source, description, method)
-           VALUES (?, ?, ?, ?, ?, ?)`,
-          [r.name, r.type, url, r.source || null, r.description || null, r.method || null],
+          `INSERT INTO software_craw (name, type, url, source, description, method, category)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          [r.name, r.type, url, r.source || null, r.description || null, r.method || null, r.category || null],
         );
         inserted++;
       }
