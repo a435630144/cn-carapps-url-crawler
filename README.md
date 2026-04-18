@@ -5,10 +5,10 @@
 ## 快速开始
 
 ```bash
-node src/crawl-all.js
+npm run start        # 爬取数据，生成 output.json（本地模式）
+npm run start:online # 仅上传 output.json 到数据库
+npm run crawl       # 爬取 + 上传数据库（自动执行两步骤）
 ```
-
-生成 `output.json`，显示成功/失败统计。
 
 **当前状态：30/30 全部成功**
 
@@ -101,7 +101,9 @@ Excel 列结构：软件名称 | 类型 | 官方下载地址 | 描述 | 来源 |
 ## 导入数据库
 
 ```bash
-cd ../webdemo2/backend && npx ts-node src/software/import-craw.ts
+npm run start:online  # 仅上传 output.json 到数据库
+# 或
+npm run crawl         # 爬取 + 上传数据库
 ```
 
 ## 已知限制

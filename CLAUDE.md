@@ -4,7 +4,9 @@
 
 运行命令：
 ```bash
-node src/crawl-all.js
+npm run start        # 爬取数据，生成 output.json（本地模式）
+npm run start:online # 仅上传 output.json 到数据库
+npm run crawl       # 爬取 + 上传数据库
 ```
 
 ---
@@ -16,8 +18,8 @@ node src/crawl-all.js
   - 数据从第3行开始
 
 - **权威数据**：`output.json`（爬取生成，含 method 字段）
-  - 运行 `node src/crawl-all.js` 从 Excel 读取配置，动态爬取 URL
-  - 数据库导入：`cd ../webdemo2/backend && npx ts-node src/software/import-craw.ts`
+  - 运行 `npm run start` 从 Excel 读取配置，动态爬取 URL
+  - 数据库导入：`npm run start:online` 或 `npm run crawl`
 
 ---
 
